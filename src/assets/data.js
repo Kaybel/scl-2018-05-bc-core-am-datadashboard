@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+window.computeUsersStats = (users, progress, courses) => {
+
+};
+
+>>>>>>> sincro
 window.sortUsers = (users, orderBy, orderDirection) => {
 
 };
