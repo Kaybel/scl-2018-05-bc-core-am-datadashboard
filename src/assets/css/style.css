@@ -14,10 +14,6 @@ img {
   background-color: yellow;
 }
 
-#imagenfondo {
-  opacity: 0.8;
-}
-
 #imagen {
   align-content: center;
 }
@@ -33,3 +29,8 @@ p {
   height: 70px;
   background-color: lightgreen;
 }
+
+#segundo-row {
+  padding-top: 2%;
+}
+
