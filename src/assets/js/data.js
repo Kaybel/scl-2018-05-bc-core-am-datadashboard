@@ -1,40 +1,28 @@
-const usersJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/users.json';
-const cohortsJSON = '../../../data/cohorts.json';
-const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-
-fetch(usersJSON)
-  .then(response => response.json())
-  .then(users => {
-    console.log(users);
-  })
-
-fetch(cohortsJSON)
-  .then(response => response.json())
-  .then(cohorts => {
-    console.log(cohorts);
-  })
-
-fetch(progressJSON)
-  .then(response => response.json())
-  .then(progress => {
-    console.log(progress);
-  })
-}
-
-
-class Reads {
-  constructor (total, completed, percent) {
+class Quizzes {
+  constructor(total, completed, percent, scoreSum, scoreAvg) {
     this.total = total,
-    this.completed = gender,
+    this.completed = completed,
     this.percent = percent,
-    
+    this.scoreSum = scoreSum,
+    this.scoreAvg = scoreAvg
   }
 }
 
-/* */
+class Reads {
+  constructor(total, completed, percent) {
+    this.total = total,
+    this.completed = completed,
+    this.percent = percent
+  }
+}
 
-let courses = Object.entries(progress).find(element => element[0] == users.id)[1];
-
+class Exercises {
+  constructor(total, completed, percent) {
+    this.total = total,
+    this.completed = completed,
+    this.percent = percent
+  }
+}
 
 
 window.computeUsersStats = (user, progress, courses) => {
