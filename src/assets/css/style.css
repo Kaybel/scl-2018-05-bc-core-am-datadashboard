@@ -1,0 +1,162 @@
+h1 {
+  text-align: center;
+  align-content: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font: bold;
+  color: #333;
+  font-size: 50px;
+  position: relative;
+  top: 20%;
+}
+
+img {
+  width: 100%;
+}
+
+#primer-row {
+  background-color: yellow;
+}
+
+#imagen {
+  align-content: center;
+}
+
+p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+
+.container-principal {
+  background-color: #FAFAFA;
+}
+
+#segundo-row {
+  padding-top: 2%;
+}
+
+.trans{
+  width: 400px;
+  background-color: #FAFAFA;
+  display: flex;
+  justify-content: center;
+}
+
+.social {
+	position: fixed; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
+	left: 0; /* Establecemos la barra en la izquierda */
+	top: 200px; /* Bajamos la barra 200px de arriba a abajo */
+	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
+}
+ 
+	.social ul {
+		list-style: none;
+	}
+ 
+	.social ul li a {
+		display: inline-block;
+		color:#fff;
+		background: #000;
+		padding: 10px 15px;
+		text-decoration: none;
+		-webkit-transition:all 500ms ease;
+		-o-transition:all 500ms ease;
+		transition:all 500ms ease; /* Establecemos una transición a todas las propiedades */
+	}
+ 
+	.social ul li .icon-facebook {background:#3b5998;} /* Establecemos los colores de cada red social, aprovechando su class */
+	.social ul li .icon-twitter {background: #00abf0;}
+	.social ul li .icon-googleplus {background: #d95232;}
+	.social ul li .icon-pinterest {background: #ae181f;}
+	.social ul li .icon-mail {background: #666666;}
+ 
+.social ul li a:hover {
+	background: #000; /* Cambiamos el fondo cuando el usuario pase el mouse */
+  padding: 10px 30px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+}
+  
+.img-lab {
+  height: 400px;
+  width: auto; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+
+#imgLaboratoria {
+  display: block;
+}
+
+.botonesTM {
+  background-color: #333;
+  height: 90%;
+  color: #FAFAFA;
+  border-radius: 5px; 
+  width: 300px;
+}
+
+#btn-cohort {
+  background-color: #333;
+  color: #FAFAFA;
+  border-radius: 5px;
+  border: black solid 1px;
+}
+
+#btnCohort {
+  display: block;
+}
+
+#botonescontacto {
+  position: absolute;
+  bottom: 0%;
+  width: 100%;
+  display: none;
+  margin-bottom: 0%;
+}
+
+#botonesDeDatos {
+  display: none;
+}
+
+.botones-datos {
+  background-color: #333;
+  color: #FAFAFA;
+  border-radius: 5px;
+  border: black solid 1px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  background-color: #FAFAFA;
+}
+
+#navbar {
+  display: none;
+}
+
+#divbtn-alumnas {
+  padding: 0%;
+  margin: 0%;
+  display: none;
+}
+
+#btn-alumnas {
+  background-color: #333;
+  color: #FAFAFA;
+  border-radius: 5px;
+  border: black solid 1px;
+  display: block;
+  margin-left: 15%;
+
+}
+
+#containerStudents {
+  width: 80%;
+  padding-left: 5%;
+}
+
+
+
