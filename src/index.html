@@ -21,14 +21,13 @@
 
     <div class="row" id="navbar">
         <nav class="navbar navbar-light bg-light">
-          <form class="form-inline">
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Alumnas</span>
-              </div>
-              <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            <span class="input-group-text" id="basic-addon1">Alumnas</span>
+              <input type="text" class="form-control" placeholder="Ingrese Nombre." aria-label="Username" aria-describedby="basic-addon1" id="autocomp" >
             </div>
-          </form>
+            <form autocomplete="off" action="/action_page.php">
+              <div class="autocomplete" style="width:300px;">
+                <div class="input-group-prepend">
+            </form>
         </nav>
     </div>
 
@@ -62,7 +61,7 @@
     <!-- en este div se guardarán los nombres de las alumnas -->
     <div class="row"> <!-- tercer row -->
       <div class="col-4" id="containerStudents"></div>
-      <div id="botonesDeDatos">
+      <div id="botonesDeDatosProgreso">
         <div class="col-3"><button type="button" id="btn-lecturas" class="btn btn-primary btn-lg botones-datos">Lecturas</button></div>
         <div class="col-3"><button type="button" id="btn-quizzes" class="btn btn-primary btn-lg botones-datos">Quizzes</button></div>
         <div class="col-3"><button type="button" id="btn-completitud" class="btn btn-primary btn-lg botones-datos">% Completitud</button></div>
