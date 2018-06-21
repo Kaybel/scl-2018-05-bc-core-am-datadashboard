@@ -84,14 +84,9 @@ p {
 }
 
 
-.imgLaboratoria {
+#imgLaboratoria {
   display: block;
 }
-
-.bloque1 {
-  display: none;
-}
-
 
 .botonesTM {
   background-color: #333;
@@ -113,12 +108,14 @@ p {
 }
 
 #botonescontacto {
-  position: relative;
+  position: absolute;
   bottom: 0%;
   width: 100%;
+  display: none;
+  margin-bottom: 0%;
 }
 
-.botonesDeDatos {
+#botonesDeDatos {
   display: none;
 }
 
@@ -127,7 +124,7 @@ p {
   color: #FAFAFA;
   border-radius: 5px;
   border: black solid 1px;
-  display: none;
+  display: block;
   margin-left: auto;
   margin-right: auto;
 }
@@ -135,5 +132,31 @@ p {
 body {
   background-color: #FAFAFA;
 }
+
+#navbar {
+  display: none;
+}
+
+#divbtn-alumnas {
+  padding: 0%;
+  margin: 0%;
+  display: none;
+}
+
+#btn-alumnas {
+  background-color: #333;
+  color: #FAFAFA;
+  border-radius: 5px;
+  border: black solid 1px;
+  display: block;
+  margin-left: 15%;
+
+}
+
+#containerStudents {
+  width: 80%;
+  padding-left: 5%;
+}
+
 
 
