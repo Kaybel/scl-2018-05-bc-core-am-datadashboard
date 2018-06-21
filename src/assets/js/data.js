@@ -46,7 +46,6 @@ const renderUsers = data => {
   });
 }; 
 
-
 window.computeUsersStats = (user, progress, courses) => {
 
 };
