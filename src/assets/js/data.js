@@ -32,7 +32,7 @@ fetch(progressJSON)
   });
   
 
-/* Declaración de objetos (constructor) */
+/* Declaración de objetos globales (constructor) */
 class Usuario {
   constructor(Stats) {
     this.stats = stats;
