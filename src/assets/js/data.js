@@ -85,14 +85,11 @@ class progressStudent {
     this.percent = percent;
   }
 }
-
-
 /* if (para hacer match por el id */
 
 for (indiceUsers = 0; indiceUsers < users.length; indiceUsers++) {
   for (indiceProgressID in progress) {
     if ((users[indiceUsers].id) === indiceProgressID) {
-
     } 
   } 
 }
