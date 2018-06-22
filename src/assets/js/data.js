@@ -10,7 +10,7 @@ let users = []; // Arreglo de usuarios de la data EN BRUTO
 
 let progress = {}; // Objeto de progreso EN BRUTO, contiene un id para cada usuario con un objeto que contiene el progreso del usuario por cada curso
 
-let cohorts = {}; // Arreglo de cohorts con la data EN BRUTO
+let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
 
 /* para armar courses, se debe acceder al objeto progress */
 let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
@@ -96,6 +96,14 @@ class progressStudent {
 
 /* if (para hacer match por el id */
 
+for (indiceUsers = 0; indiceUsers < users.length; indiceUsers++) {
+  for (indiceProgressID in progress) {
+    if ((users[indiceUsers].id) === indiceProgressID) {
+
+    } 
+  } 
+}
+  
 
 /* for in anidados*/
 
