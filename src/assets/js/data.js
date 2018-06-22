@@ -10,7 +10,7 @@ let users = []; // Arreglo de usuarios de la data EN BRUTO
 
 let progress = {}; // Objeto de progreso EN BRUTO, contiene un id para cada usuario con un objeto que contiene el progreso del usuario por cada curso
 
-let cohorts = {}; // Arreglo de cohorts con la data EN BRUTO
+let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
 
 /* para armar courses, se debe acceder al objeto progress */
 let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
@@ -30,14 +30,7 @@ fetch(progressJSON)
     progress = data;
     console.log(progress);
   });
-
-fetch(cohortsJSON)
-  .then(response => response.json())
-  .then(data => {
-    cohorts = data;
-    console.log(cohorts);
-  });
-
+  
 
 /* Declaración de objetos globales (constructor) */
 class Usuario {
@@ -93,14 +86,17 @@ class progressStudent {
   }
 }
 
-/* if (para hacer match por el id */
-
-
-/* for in anidados*/
-/* Construcción Progress */
-/* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra en objeto progress. Detalle: Hay usuarios que no tienen nada, está vacío */
 
 /* if (para hacer match por el id */
+
+for (indiceUsers = 0; indiceUsers < users.length; indiceUsers++) {
+  for (indiceProgressID in progress) {
+    if ((users[indiceUsers].id) === indiceProgressID) {
+
+    } 
+  } 
+}
+  
 
 /* for in anidados*/
 
