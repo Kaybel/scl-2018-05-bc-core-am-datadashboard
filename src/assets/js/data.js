@@ -85,9 +85,9 @@ class Exercises {
   }
 }
 
-/* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra en objeto progress. Detalle: Hay usuarios que no tienen nada, está vacío */
+/* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra como elemento en objeto progress > Objeto intro. Detalle: Hay usuarios que no tienen nada, está vacío */
 class progressStudent {
-  constructor(id, progress) {
+  constructor(id, percent) {
     this.id = id,
     this.progress = progress;
   }
