@@ -97,6 +97,12 @@ class progressStudent {
 
 
 /* for in anidados*/
+/* Construcción Progress */
+/* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra en objeto progress. Detalle: Hay usuarios que no tienen nada, está vacío */
+
+/* if (para hacer match por el id */
+
+/* for in anidados*/
 
 
 window.computeUsersStats = (user, progress, courses) => {
