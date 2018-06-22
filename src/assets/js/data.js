@@ -3,7 +3,7 @@ const btnProgreso = document.getElementById('botonesDeDatosProgreso');*/
 
 const usersJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
-const cohortsJSON = '../../../../data/cohorts/cohorts.json';
+const cohortsJSON = '../../../data/cohorts.json';
 
 /* Variables que guardarán json */
 let users = []; // Arreglo de usuarios de la data EN BRUTO
@@ -22,7 +22,6 @@ fetch(usersJSON)
   .then(data => {
     users = data;
     console.log(users);
-    renderUsers(users);
   });
 
 fetch(progressJSON)
@@ -30,7 +29,6 @@ fetch(progressJSON)
   .then(data => {
     progress = data;
     console.log(progress);
-    renderUsers(progress);
   });
 
 fetch(cohortsJSON)
@@ -38,7 +36,6 @@ fetch(cohortsJSON)
   .then(data => {
     cohorts = data;
     console.log(cohorts);
-    renderUsers(cohorts);
   });
 
 
