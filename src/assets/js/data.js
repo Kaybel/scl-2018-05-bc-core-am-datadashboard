@@ -42,7 +42,7 @@ fetch(cohortsJSON)
 /* Declaración de objetos (constructor) */
 class Usuario {
   constructor(Stats) {
-    this.stats = stats
+    this.stats = stats;
   }
 }
 
@@ -51,7 +51,7 @@ class Stats {
     this.Percent = Percent,
     this.Exercises = Exercises,
     this.Reads = Reads,
-    this.Quizzes = Quizzes
+    this.Quizzes = Quizzes;
   }
 }
 
@@ -63,7 +63,7 @@ class Quizzes {
     this.completed = completed,
     this.percent = percent,
     this.scoreSum = scoreSum,
-    this.scoreAvg = scoreAvg
+    this.scoreAvg = scoreAvg;
   }
 }
 
@@ -72,7 +72,7 @@ class Reads {
   constructor(total, completed, percent) {
     this.total = total,
     this.completed = completed,
-    this.percent = percent
+    this.percent = percent;
   }
 }
 
@@ -81,15 +81,23 @@ class Exercises {
   constructor(total, completed, percent) {
     this.total = total,
     this.completed = completed,
-    this.percent = percent
+    this.percent = percent;
+  }
+}
+
+class progressStudent {
+  constructor(id, progress) {
+    this.id = id,
+    this.progress = progress;
   }
 }
 
 /* Construcción Progress */
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra en objeto progress. Detalle: Hay usuarios que no tienen nada, está vacío */
-let progressStudent = 
+/* let progressStudent = */
 
 /* if (para hacer match por el id */
+
 
 /* for in anidados*/
 
