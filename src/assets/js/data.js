@@ -39,7 +39,7 @@ fetch(cohortsJSON)
   });
 
 
-/* Declaración de objetos (constructor) */
+/* Declaración de objetos globales (constructor) */
 class Usuario {
   constructor(Stats) {
     this.stats = stats;
@@ -89,10 +89,9 @@ class Exercises {
 class progressStudent {
   constructor(id, percent) {
     this.id = id,
-    this.progress = progress;
+    this.percent = percent;
   }
 }
-
 
 /* if (para hacer match por el id */
 
@@ -101,7 +100,7 @@ class progressStudent {
 
 
 window.computeUsersStats = (user, progress, courses) => {
-  
+
 };
 window.sortUsers = (users, orderBy, orderDirection) => {
 
@@ -109,6 +108,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 window.filterUsers = (users, search) => {
 
 };
+
 window.processCohortData = (options) => {
 
 };
