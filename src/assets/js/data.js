@@ -87,9 +87,6 @@ class Exercises {
 
 /* Construcción Progress */
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra en objeto progress. Detalle: Hay usuarios que no tienen nada, está vacío */
-progress = new progressStudent();
-
-progress
 
 /* if (para hacer match por el id */
 
