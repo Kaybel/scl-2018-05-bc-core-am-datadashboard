@@ -30,14 +30,7 @@ fetch(progressJSON)
     progress = data;
     console.log(progress);
   });
-
-fetch(cohortsJSON)
-  .then(response => response.json())
-  .then(data => {
-    cohorts = data;
-    console.log(cohorts);
-  });
-
+  
 
 /* Declaración de objetos (constructor) */
 class Usuario {
@@ -89,7 +82,7 @@ class Exercises {
 class progressStudent {
   constructor(id, percent) {
     this.id = id,
-    this.progress = progress;
+    this.percent = percent;
   }
 }
 
@@ -109,7 +102,7 @@ for (indiceUsers = 0; indiceUsers < users.length; indiceUsers++) {
 
 
 window.computeUsersStats = (user, progress, courses) => {
-  
+
 };
 window.sortUsers = (users, orderBy, orderDirection) => {
 
@@ -117,6 +110,7 @@ window.sortUsers = (users, orderBy, orderDirection) => {
 window.filterUsers = (users, search) => {
 
 };
+
 window.processCohortData = (options) => {
 
 };
