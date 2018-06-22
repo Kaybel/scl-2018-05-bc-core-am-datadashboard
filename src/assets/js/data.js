@@ -93,8 +93,36 @@ for (indiceUsers = 0; indiceUsers < users.length; indiceUsers++) {
   for (indiceProgressID in progress) {
     if ((users[indiceUsers].id) === indiceProgressID) {
 
+      let introObj = indiceProgressID.intro;
+      let unitsObj = introObt.units;
+     // let indiceCourses = unitsObj.
+
     } 
   } 
+}
+
+progressArray = Object.entries(progress);
+progressArray = [];
+introArray = [];
+percentArray = [];
+for (i = 0; i < progressArray.length ; i++) {
+introArray.push(Object.entries(progressArray[i][1]));
+console.log(introArray[i]["0"][1].percent);
+} 
+
+/*
+for(let idEstudiante in progress){console.log("ID > "+JSON.stringify(progress[idEstudiante]))
+	for(let idCurso in progress[idEstudiante]){
+		console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]))
+	}
+} 
+*/
+let totalReads = 0;
+let completedReads = 0;
+if ('type' == 'read' && 'completed' == 1) {
+  completedReads = CompletedReads++; 
+} else if ('type' == 'read') {
+  totalReads++;
 }
   
 
