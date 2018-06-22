@@ -63,7 +63,7 @@ class Quizzes {
     this.completed = completed,
     this.percent = percent,
     this.scoreSum = scoreSum,
-    this.scoreAvg = scoreAvg
+    this.scoreAvg = scoreAvg,
   }
 }
 
@@ -72,7 +72,7 @@ class Reads {
   constructor(total, completed, percent) {
     this.total = total,
     this.completed = completed,
-    this.percent = percent
+    this.percent = percent,
   }
 }
 
@@ -81,7 +81,7 @@ class Exercises {
   constructor(total, completed, percent) {
     this.total = total,
     this.completed = completed,
-    this.percent = percent
+    this.percent = percent,
   }
 }
 
