@@ -30,7 +30,7 @@ fetch(progressJSON)
     progress = data;
     console.log(progress);
   });
-/*
+
 fetch(cohortsJSON)
   .then(response => response.json())
   .then(data => {
@@ -39,7 +39,7 @@ fetch(cohortsJSON)
   });
 
 
-/* Declaración de objetos (constructor) */
+/* Declaración de objetos globales (constructor) */
 class Usuario {
   constructor(Stats) {
     this.stats = stats;
@@ -85,11 +85,20 @@ class Exercises {
   }
 }
 
+/* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra como elemento en objeto progress > Objeto intro. Detalle: Hay usuarios que no tienen nada, está vacío */
+class progressStudent {
+  constructor(id, percent) {
+    this.id = id,
+    this.percent = percent;
+  }
+}
+
+/* if (para hacer match por el id */
+
+
+/* for in anidados*/
 /* Construcción Progress */
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra en objeto progress. Detalle: Hay usuarios que no tienen nada, está vacío */
-progress = new progressStudent();
-
-progress
 
 /* if (para hacer match por el id */
 
