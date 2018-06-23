@@ -30,7 +30,7 @@ fetch(progressJSON)
     progress = data;
     console.log(progress);
   });
-  
+
 
 /* Declaración de objetos globales (constructor) */
 class Usuario {
@@ -96,36 +96,36 @@ introArray.push(Object.entries(progressArray[i][1]));
 console.log(introArray[i]["0"][1].percent);
 } */
 
-for(let idEstudiante in progress){console.log("ID > " + idEstudiante +JSON.stringify(progress[idEstudiante]))}
+for (let idEstudiante in progress) { console.log("ID > " + idEstudiante + JSON.stringify(progress[idEstudiante])) }
 
 
-for(let idEstudiante in progress) {
+for (let idEstudiante in progress) {
   //console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-	  for(let idCurso in progress[idEstudiante]) {
-      //console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-        for (let idUnits in progress[idEstudiante][idCurso]) {
-          //console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-            for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
-              //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-              for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
-                //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-                for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
-                  //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
-                  for (let datosFinales in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype]){
-                    console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype][datosFinales])); 
-                  }
-                }
-              }
+  for (let idCurso in progress[idEstudiante]) {
+    //console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
+    for (let idUnits in progress[idEstudiante][idCurso]) {
+      //console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
+      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+        //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]);
+        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+          //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
+          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+            //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+            for (let datosFinales in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype]) {
+              console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype][datosFinales]));
             }
+          }
         }
-	  }
-} 
+      }
+    }
+  }
+}
 
 /* Aquí dejo planteado procesamiento para lecturas completadas y total de lecturas */
 let totalReads = 0;
 let completedReads = 0;
 if ('type' == 'read' && 'completed' == 1) {
-  completedReads = CompletedReads++; 
+  completedReads = CompletedReads++;
 } else if ('type' == 'read') {
   totalReads++;
 }
