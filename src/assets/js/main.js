@@ -8,8 +8,9 @@ btnCohort.addEventListener('click', () => {
   document.getElementById('btnCohort').style.display = 'none';
   document.getElementById('imgLaboratoria').style.display = 'none';
 });
-
+/* 
 botonalumnas.addEventListener('click', () => {
   document.getElementById('botonesDeDatos').style.display = 'block';
   
 });
+*/
