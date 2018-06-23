@@ -79,7 +79,7 @@ class Exercises {
 }
 
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra como elemento en objeto progress > Objeto intro. Detalle: Hay usuarios que no tienen nada, está vacío */
-class progressStudent {
+class Percent {
   constructor(id, percent) {
     this.id = id,
     this.percent = percent;
@@ -87,34 +87,41 @@ class progressStudent {
 }
 /* if (para hacer match por el id */
 
-for (indiceUsers = 0; indiceUsers < users.length; indiceUsers++) {
-  for (indiceProgressID in progress) {
-    if ((users[indiceUsers].id) === indiceProgressID) {
-
-      let introObj = indiceProgressID.intro;
-      let unitsObj = introObt.units;
-     // let indiceCourses = unitsObj.
-
-    } 
-  } 
-}
-
-progressArray = Object.entries(progress);
+/*progressArray = Object.entries(progress);
 progressArray = [];
 introArray = [];
 percentArray = [];
 for (i = 0; i < progressArray.length ; i++) {
 introArray.push(Object.entries(progressArray[i][1]));
 console.log(introArray[i]["0"][1].percent);
+} */
+
+for(let idEstudiante in progress){console.log("ID > " + idEstudiante +JSON.stringify(progress[idEstudiante]))}
+
+
+for(let idEstudiante in progress) {
+  //console.log("ID > "+JSON.stringify(progress[idEstudiante]));
+	  for(let idCurso in progress[idEstudiante]) {
+      //console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
+        for (let idUnits in progress[idEstudiante][idCurso]) {
+          //console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
+            for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+              //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
+              for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+                //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
+                for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+                  //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+                  for (let datosFinales in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype]){
+                    console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype][datosFinales])); 
+                  }
+                }
+              }
+            }
+        }
+	  }
 } 
 
-/*
-for(let idEstudiante in progress){console.log("ID > "+JSON.stringify(progress[idEstudiante]))
-	for(let idCurso in progress[idEstudiante]){
-		console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]))
-	}
-} 
-*/
+/* Aquí dejo planteado procesamiento para lecturas completadas y total de lecturas */
 let totalReads = 0;
 let completedReads = 0;
 if ('type' == 'read' && 'completed' == 1) {
@@ -122,9 +129,6 @@ if ('type' == 'read' && 'completed' == 1) {
 } else if ('type' == 'read') {
   totalReads++;
 }
-  
-
-/* for in anidados*/
 
 
 window.computeUsersStats = (user, progress, courses) => {
