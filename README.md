@@ -255,19 +255,17 @@ objeto con las siguientes propiedades:
 * `exercises`: Objeto con tres propiedades:
   - `total`: Número total de ejercicios autocorregidos presentes en cursos del
     cohort.
+    
   - `completed`: Número de ejercicios autocorregidos completados por el usuario.
   - `percent`: Porcentaje de ejercicios autocorregidos completados.
-* `reads`: Objeto con tres propiedades:
-  - `total`: Número total de lecturas presentes en cursos del cohort.
-  - `completed`: Número de lecturas completadas por el usuario.
-  - `percent`: Porcentaje de lecturas completadas.
+
 * `quizzes`: Objeto con cinco propiedades:
   - `total`: Número total de quizzes presentes en cursos del cohort.
   - `completed`: Número de quizzes completadas por el usuario.
   - `percent`: Porcentaje de quizzes completadas.
   - `scoreSum`: Suma de todas las puntuaciones (score) de los quizzes
     completados.
-  - `scoreAvg`: Promedio de puntuaciones en quizzes completados.
+  - `scoreAvg`:  Promedio de puntuaciones en quizzes completados.
 
 #### 2) `sortUsers(users, orderBy, orderDirection)`
 
