@@ -90,26 +90,28 @@ for (let idEstudiante in progress) {
   console.log('ID > ' + idEstudiante + JSON.stringify(progress[idEstudiante]));
 }
 
+
+
 let readEst = 0;
 
 for (let idEstudiante in progress) {
   // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-  for (let idCurso in progress[idEstudiante]) {
+  for (let idCursoR in progress[idEstudiante]) {
     let completedreads = 0;
     // console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-    for (let idUnits in progress[idEstudiante][idCurso]) {
+    for (let idUnitsR in progress[idEstudiante][idCursoR]) {
       // console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+      for (let indexPartsR in progress[idEstudiante][idCursoR][idUnitsR]) {
         // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+        for (let indexCoursesR in progress[idEstudiante][idCursoR][idUnitsR][indexPartsR]) {
           // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
-            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
-            console.log(chapter);
-            if (chapter.type === 'read') {
+          for (let indextypeR in progress[idEstudiante][idCursoR][idUnitsR][indexPartsR][indexCoursesR]) {
+            let chapterRead = ((progress[idEstudiante][idCursoR][idUnitsR][indexPartsR][indexCoursesR][indextypeR])); 
+            console.log(chapterRead);
+            if (chapterRead.type === 'read') {
               Reads.total = readEst++;
             }
-            if (chapter.type === 'read' && chapter.completed === 1) {
+            if (chapterRead.type === 'read' && chapterRead.completed === 1) {
               Reads.completed = (completedreads = completedreads + 1); {
                 if (readEst > 1 && completedreads > 1) {
                   Reads.percent = ((readEst % completedreads) * 100);
@@ -126,21 +128,21 @@ for (let idEstudiante in progress) {
 let quizzesEst = 0;
 for (let idEstudiante in progress) {
   // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-  for (let idCurso in progress[idEstudiante]) {
+  for (let idCursoQ in progress[idEstudiante]) {
     let completedQuizz = 0;
     // console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-    for (let idUnits in progress[idEstudiante][idCurso]) {
+    for (let idUnitsQ in progress[idEstudiante][idCursoQ]) {
       // console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+      for (let indexPartsQ in progress[idEstudiante][idCursoQ][idUnitsQ]) {
         // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+        for (let indexCoursesQ in progress[idEstudiante][idCursoQ][idUnitsQ][indexPartsQ]) {
           // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
-            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
-            console.log(chapter); {
-              if (chapter.type === 'quiz') {
+          for (let indextypeQ in progress[idEstudiante][idCursoQ][idUnitsQ][indexPartsQ][indexCoursesQ]) {
+            let chapterQuizz = ((progress[idEstudiante][idCursoQ][idUnitsQ][indexPartsQ][indexCoursesQ][indextypeQ])); 
+            console.log(chapterQuizz); {
+              if (chapterQuizz.type === 'quiz') {
                 Quizzes.total = quizzesEst++;
-                if (chapter.type === 'quiz' && chapter.completed === 1) {
+                if (chapterQuizz.type === 'quiz' && chapterQuizz.completed === 1) {
                   Quizzes.completed = (completedQuizz = completedQuizz + 1); {
                   // porcentaje global
                     if (completedQuizz > 1 && quizzesEst > 1) {
@@ -166,21 +168,21 @@ for (let idEstudiante in progress) {
 let exercises = 0;
 for (let idEstudiante in progress) {
   // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-  for (let idCurso in progress[idEstudiante]) {
+  for (let idCursoEx in progress[idEstudiante]) {
     let completedExercises = 0;
     // console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-    for (let idUnits in progress[idEstudiante][idCurso]) {
+    for (let idUnitsEx in progress[idEstudiante][idCursoEx]) {
       // console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+      for (let indexPartsEx in progress[idEstudiante][idCursoEx][idUnitsEx]) {
         // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+        for (let indexCoursesEx in progress[idEstudiante][idCursoEx][idUnitsEx][indexPartsEx]) {
           // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
-            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
-            console.log(chapter); {
-              if (chapter.type === 'exercises') {
+          for (let indextypeEx in progress[idEstudiante][idCursoEx][idUnitsEx][indexPartsEx][indexCoursesEx]) {
+            let chapterExercises = ((progress[idEstudiante][idCursoEx][idUnitsEx][indexPartsEx][indexCoursesEx][indextype])); 
+            console.log(chapterExercises); {
+              if (chapterExercises.type === 'exercises') {
                 Exercises.total = exercises++;
-                if (chapter.type === 'exercises' && chapter.completed === 1) {
+                if (chapterExercises.type === 'exercises' && chapterExercises.completed === 1) {
                   Exercises.completed = (completedExercises = completedExercises + 1); {
                   // porcentaje global exercises
                     if (exercises > 1 && completedExercises > 1) {
