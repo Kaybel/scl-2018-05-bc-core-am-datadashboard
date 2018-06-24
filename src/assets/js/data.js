@@ -5,85 +5,79 @@ const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.jso
 const cohortsJSON = '../../../data/cohorts.json';
 
 
-  /* Variables que guardarán json */
-  let users = []; // Arreglo de usuarios de la data EN BRUTO
+/* Variables que guardarán json */
+let users = []; // Arreglo de usuarios de la data EN BRUTO
 
-  let progress = {}; // Objeto de progreso EN BRUTO, contiene un id para cada usuario con un objeto que contiene el progreso del usuario por cada curso
+let progress = {}; // Objeto de progreso EN BRUTO, contiene un id para cada usuario con un objeto que contiene el progreso del usuario por cada curso
 
-  let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
+let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
 
-  /* para armar courses, se debe acceder al objeto progress */
-  let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
+/* para armar courses, se debe acceder al objeto progress */
+let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
 
 
-  /* Promesas (retorno de json) */
-  fetch(usersJSON)
-    .then(response => response.json())
-    .then(data => {
-      users = data;
-      console.log(users);
-    });
+/* Promesas (retorno de json) */
+fetch(usersJSON)
+  .then(response => response.json())
+  .then(data => {
+    users = data;
+    console.log(users);
+  });
 
-  fetch(progressJSON)
-    .then(response => response.json())
-    .then(data => {
-      progress = data;
-      console.log(progress);
-    });
+fetch(progressJSON)
+  .then(response => response.json())
+  .then(data => {
+    progress = data;
+    console.log(progress);
+  });
 
-  fetch(cohortsJSON)
-    .then(response => response.json())
-    .then(data => {
-      cohorts = data;
-      console.log(cohorts);
-    });
+fetch(cohortsJSON)
+  .then(response => response.json())
+  .then(data => {
+    cohorts = data;
+    console.log(cohorts);
+  });
 
-btnCohort.addEventListener('click', () => {
+  btnCohort.addEventListener('click', () => {
+    
   
 for (let idEstudiante in progress) {
 	  for (let idCurso in progress[idEstudiante]) {
-      let completedlect = 0;
-      let completedquiz = 0;
-      let lect = 0;
-      let quiz = 0;
-      let exercises = 0;
-      let completedexercises = 0;
-      let scoreSum = 0;
-      let scoreAvg = 0;
-      for (let idUnits in progress[idEstudiante][idCurso]) {
-        for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
-          for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
-            for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
-              let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
-              if (chapter.type === 'read') {
-                lect++;
-              }
-              if (chapter.type === 'read' && chapter.completed === 1) {
-                completedlect++;
-              }                 
-              if (chapter.type === 'quiz') {
-                quiz++;
-              } 
-              if (chapter.type === 'quiz' && chapter.completed === 1) {
-                completedquiz++;
-                scoreSum += chapter.score;
-              }
-              if (chapter.type === 'practice') {
-                exercises++;
-              }
-              if (chapter.type === 'practice' && chapter.completed === 1) {
-                completedexercises++;
-              }
-            }               
-          }
+    let completedlect = 0;
+    let completedquiz = 0;
+    let lect = 0;
+    let quiz = 0;
+    let exercises = 0;
+    let completedexercises = 0;
+    let scoreSum = 0;
+    let scoreAvg = 0;
+    for (let idUnits in progress[idEstudiante][idCurso]) {
+      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+            if (chapter.type === 'read') {
+              lect++;
+            }
+            if (chapter.type === 'read' && chapter.completed === 1) {
+              completedlect++;
+            }                 
+            if (chapter.type === 'quiz') {
+              quiz++;
+            } 
+            if (chapter.type === 'quiz' && chapter.completed === 1) {
+              completedquiz++;
+              scoreSum += chapter.score;
+            }
+            if (chapter.type === 'practice') {
+              exercises++;
+            }
+            if (chapter.type === 'practice' && chapter.completed === 1) {
+              completedexercises++;
+            }
+          }               
         }
       }
-      let percentLect = Math.round((completedlect / lect) * 100); 
-      let percentQuiz = Math.round((completedquiz / quiz) * 100);
-      let percentExercises = Math.round((completedexercises / exercises) * 100);
-      scoreAvg = scoreSum / completedquiz;
-      console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
-    /* document.getElementById('contenido').innerHTML = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises); */
     }
     let percentLect = Math.round((completedlect / lect) * 100); 
     let percentQuiz = Math.round((completedquiz / quiz) * 100);
@@ -105,6 +99,7 @@ for (let idEstudiante in progress) {
     cont.appendChild(resultados);
    
   }
+}
 });
   
 
@@ -161,18 +156,7 @@ class Percent {
 }
 
 
-/* const lecturasStudens = () => { 
-for (let idEstudiante in progress) {
-  console.log('ID > ' + idEstudiante + JSON.stringify(progress[idEstudiante]));
-}
-// names 
-
-users.forEach(usuario => {
-  console.log(usario.name);
-  Percent.id = users;
-});
-
-let readEst = 0;
+/*const lecturasStudens = () => { 
 for (let idEstudiante in progress) {
 	  for (let idCurso in progress[idEstudiante]) {
     let completedlect = 0;
@@ -311,9 +295,6 @@ const renderUsers = (user, processed) => {
         '</tr>';
     };
   };
-  btnAlumnas.addEventListener('click', () => {
-
-  });
 };
 
 const totalStats = (processed) => {
@@ -338,7 +319,7 @@ const totalStats = (processed) => {
     document.getElementById('totalExercises').innerHTML = Math.round(totalExercize / processed.length) + '%';
     document.getElementById('totalCohorts').innerHTML = Math.round(totalCohort / processed.length) + '%';
   };
-}; */
+};*/
 
 
 window.sortUsers = (users, orderBy, orderDirection) => {
