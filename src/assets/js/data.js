@@ -7,15 +7,15 @@ const cohortsJSON = '../../../data/cohorts.json';
 btnCohort.addEventListener('click', () => {
   alert('sjsj');
 
-/* Variables que guardarán json */
-let users = []; // Arreglo de usuarios de la data EN BRUTO
+  /* Variables que guardarán json */
+  let users = []; // Arreglo de usuarios de la data EN BRUTO
 
-let progress = {}; // Objeto de progreso EN BRUTO, contiene un id para cada usuario con un objeto que contiene el progreso del usuario por cada curso
+  let progress = {}; // Objeto de progreso EN BRUTO, contiene un id para cada usuario con un objeto que contiene el progreso del usuario por cada curso
 
-let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
+  let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
 
-/* para armar courses, se debe acceder al objeto progress */
-let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
+  /* para armar courses, se debe acceder al objeto progress */
+  let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
 
 
   /* Promesas (retorno de json) */
@@ -84,7 +84,7 @@ let courses = []; // Arreglo de strings con los ids de los cursos del cohort en 
       let percentQuiz = Math.round((completedquiz / quiz) * 100);
       let percentExercises = Math.round((completedexercises / exercises) * 100);
       scoreAvg = scoreSum / completedquiz;
-      console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises)
+      console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
     /* document.getElementById('contenido').innerHTML = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises); */
     }
   }
