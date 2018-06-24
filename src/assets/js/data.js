@@ -146,6 +146,17 @@ class Percent {
 
 /*const lecturasStudens = () => { 
 for (let idEstudiante in progress) {
+  console.log('ID > ' + idEstudiante + JSON.stringify(progress[idEstudiante]));
+}
+// names 
+
+users.forEach(usuario => {
+  console.log(usario.name);
+  Percent.id = users;
+});
+
+let readEst = 0;
+for (let idEstudiante in progress) {
 	  for (let idCurso in progress[idEstudiante]) {
     let completedlect = 0;
     let lect = 0;
@@ -283,6 +294,9 @@ const renderUsers = (user, processed) => {
         '</tr>';
     };
   };
+  btnAlumnas.addEventListener('click', () => {
+
+  });
 };
 
 const totalStats = (processed) => {
