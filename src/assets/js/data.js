@@ -78,6 +78,7 @@ class Exercises {
   }
 }
 
+
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra como elemento en objeto progress > Objeto intro. Detalle: Hay usuarios que no tienen nada, está vacío */
 class Percent {
   constructor(id, percent) {
@@ -101,36 +102,45 @@ console.log(introArray[i]["0"][1].percent);
 for(let idEstudiante in progress){console.log("ID > " + idEstudiante +JSON.stringify(progress[idEstudiante]))}
 
 
+
+ let lect = 0
 for(let idEstudiante in progress) {
+ 
   //console.log("ID > "+JSON.stringify(progress[idEstudiante]));
 	  for(let idCurso in progress[idEstudiante]) {
+      let completedlect = 0;
       //console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
         for (let idUnits in progress[idEstudiante][idCurso]) {
+          
           //console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
             for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
               //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
+              
               for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
                 //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
+                
                 for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
-                  //console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
-                  for (let datosFinales in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype]){
-                    console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype][datosFinales])); 
+                  let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+                  console.log(chapter);
+                  
+                  if (chapter.type === "read"){
+                    lect++;
+            
                   }
-                }
-              }
+                  if (chapter.type === "read" && chapter.completed === 1){
+                    completedlect = completedlect + 1;
+              
+                  }                  
+                }               
+              }           
             }
         }
-	  }
-} 
-
-/* Aquí dejo planteado procesamiento para lecturas completadas y total de lecturas */
-let totalReads = 0;
-let completedReads = 0;
-if ('type' == 'read' && 'completed' == 1) {
-  completedReads = CompletedReads++; 
-} else if ('type' == 'read') {
-  totalReads++;
+        console.log('para la estudiante de ID ' + idEstudiante + ' las lecturas realizadas son: ' + completedlect);    
+    }     
 }
+
+               
+
 
 
 window.computeUsersStats = (user, progress, courses) => {
