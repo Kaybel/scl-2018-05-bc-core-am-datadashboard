@@ -1,6 +1,7 @@
-/* const btnAlumnas = document.getElementById('btn-alumnas');
-const btnProgreso = document.getElementById('botonesDeDatosProgreso');*/
-
+const btnAlumnas = document.getElementById('btn-alumnas');
+const btnLectura = document.getElementById('btn-lecturas');
+const btnQuizzes = document.getElementById('btn-quizzes');
+const btnCompletitud = document.getElementById('btn-completitud');
 const usersJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const cohortsJSON = '../../../data/cohorts.json';
@@ -55,6 +56,10 @@ class Stats {
   }
 }
 
+Stats.Reads = Reads;
+Stats.Quizzes = Quizzes;
+Stats.Exercises = Exercises;
+Stats.Percent = Percent;
 
 /* Construcción objeto Quizzes */
 class Quizzes {
@@ -75,7 +80,6 @@ class Reads {
     this.percent = percent;
   }
 }
-
 /* Construcción objeto Exercises */
 class Exercises {
   constructor(total, completed, percent) {
@@ -84,7 +88,6 @@ class Exercises {
     this.percent = percent;
   }
 }
-
 
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra como elemento en objeto progress > Objeto intro. Detalle: Hay usuarios que no tienen nada, está vacío */
 class Percent {
