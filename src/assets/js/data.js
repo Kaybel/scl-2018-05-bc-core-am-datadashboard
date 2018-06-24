@@ -38,16 +38,9 @@ const cohortsJSON = '../../../data/cohorts.json';
       console.log(cohorts);
     });
 
-<<<<<<< HEAD
-  btnCohort.addEventListener('click', () => {
-    alert('sjsj');
+btnCohort.addEventListener('click', () => {
   
 for (let idEstudiante in progress) {
-=======
-  let lect = 0;
-  let quiz = 0;
-  for (let idEstudiante in progress) {
->>>>>>> cf5fe65a42aeb191871140d9b64415b5ec409aa4
 	  for (let idCurso in progress[idEstudiante]) {
       let completedlect = 0;
       let completedquiz = 0;
@@ -92,7 +85,6 @@ for (let idEstudiante in progress) {
       console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
     /* document.getElementById('contenido').innerHTML = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises); */
     }
-<<<<<<< HEAD
     let percentLect = Math.round((completedlect / lect) * 100); 
     let percentQuiz = Math.round((completedquiz / quiz) * 100);
     let percentExercises = Math.round((completedexercises / exercises) * 100);
@@ -112,8 +104,6 @@ for (let idEstudiante in progress) {
   
     cont.appendChild(resultados);
    
-=======
->>>>>>> cf5fe65a42aeb191871140d9b64415b5ec409aa4
   }
 });
   
