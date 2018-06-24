@@ -97,21 +97,8 @@ for (let idEstudiante in progress) {
 
 users.forEach(usuario => {
   console.log(usario.name);
+  Percent.id = users;
 });
-
-/*
-const user = data => {
-  btnAlumnas.addEventListener('click', () => {
-    const render = data.forEach(element => {
-      return containerStudents.innertHTML += `<p>${element.name.toUpperCase()}</p>`;
-    });
-    return render;
-    cohorts = data;
-    console.log(cohorts);
-    user(cohorts);
-  });
-}; */ 
-
 
 let readEst = 0;
 for (let idEstudiante in progress) {
@@ -220,7 +207,9 @@ for (let idEstudiante in progress) {
 }
 
 window.computeUsersStats = (user, progress, courses) => {
+  btnAlumnas.addEventListener('click', () => {
 
+  });
 };
 window.sortUsers = (users, orderBy, orderDirection) => {
 
