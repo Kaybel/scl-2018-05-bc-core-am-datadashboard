@@ -49,6 +49,11 @@ class Stats {
   }
 }
 
+Stats.Reads = Reads;
+Stats.Quizzes = Quizzes;
+Stats.Exercises = Exercises;
+Stats.Percent = Percent;
+
 /* Construcción objeto Quizzes */
 class Quizzes {
   constructor(total, completed, percent, scoreSum, scoreAvg) {
@@ -68,7 +73,6 @@ class Reads {
     this.percent = percent;
   }
 }
-
 /* Construcción objeto Exercises */
 class Exercises {
   constructor(total, completed, percent) {
@@ -77,7 +81,6 @@ class Exercises {
     this.percent = percent;
   }
 }
-
 
 /* % de progreso gral de cada estudiante, de todos sus cursos. Se encuentra como elemento en objeto progress > Objeto intro. Detalle: Hay usuarios que no tienen nada, está vacío */
 class Percent {
