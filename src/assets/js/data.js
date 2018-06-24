@@ -4,8 +4,6 @@ const usersJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const cohortsJSON = '../../../data/cohorts.json';
 
-btnCohort.addEventListener('click', () => {
-  alert('sjsj');
 
   /* Variables que guardarán json */
   let users = []; // Arreglo de usuarios de la data EN BRUTO
@@ -40,9 +38,9 @@ btnCohort.addEventListener('click', () => {
       console.log(cohorts);
     });
 
-  let lect = 0;
-  let quiz = 0;
-  for (let idEstudiante in progress) {
+btnCohort.addEventListener('click', () => {
+  
+for (let idEstudiante in progress) {
 	  for (let idCurso in progress[idEstudiante]) {
       let completedlect = 0;
       let completedquiz = 0;
@@ -87,6 +85,25 @@ btnCohort.addEventListener('click', () => {
       console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
     /* document.getElementById('contenido').innerHTML = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises); */
     }
+    let percentLect = Math.round((completedlect / lect) * 100); 
+    let percentQuiz = Math.round((completedquiz / quiz) * 100);
+    let percentExercises = Math.round((completedexercises / exercises) * 100);
+    scoreAvg = scoreSum / completedquiz;
+    console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
+
+    let datos = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
+
+    const cont = document.getElementById('cont');
+    const resultados = document.createElement('div');
+
+    let datosAlumnas = document.createTextNode(datos);
+
+    const contenedorElemento = document.createElement('p');
+    contenedorElemento.appendChild(datosAlumnas);
+    resultados.appendChild(contenedorElemento);
+  
+    cont.appendChild(resultados);
+   
   }
 });
   
