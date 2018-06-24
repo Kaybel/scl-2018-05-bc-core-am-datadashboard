@@ -4,6 +4,7 @@ const btnQuizzes = document.getElementById('btn-quizzes');
 const btnCompletitud = document.getElementById('btn-completitud');
 const usersJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
+const cohortsJSON = '../../../data/cohorts.json';
 
 /* Variables que guardarán json */
 let users = []; // Arreglo de usuarios de la data EN BRUTO
@@ -89,11 +90,27 @@ class Percent {
 for (let idEstudiante in progress) {
   console.log('ID > ' + idEstudiante + JSON.stringify(progress[idEstudiante]));
 }
+// names 
 
+users.forEach(usuario => {
+  console.log(usario.name);
+});
+
+/*
+const user = data => {
+  btnAlumnas.addEventListener('click', () => {
+    const render = data.forEach(element => {
+      return containerStudents.innertHTML += `<p>${element.name.toUpperCase()}</p>`;
+    });
+    return render;
+    cohorts = data;
+    console.log(cohorts);
+    user(cohorts);
+  });
+}; */ 
 
 
 let readEst = 0;
-
 for (let idEstudiante in progress) {
   // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
   for (let idCursoR in progress[idEstudiante]) {
