@@ -1,10 +1,11 @@
-const btnAlumnas = document.getElementById('btn-alumnas');
-const btnLectura = document.getElementById('btn-lecturas');
-const btnQuizzes = document.getElementById('btn-quizzes');
-const btnCompletitud = document.getElementById('btn-completitud');
+const btnCohort = document.getElementById('btn-cohort');
+
 const usersJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/users.json';
 const progressJSON = '../../../data/cohorts/lim-2018-03-pre-core-pw/progress.json';
 const cohortsJSON = '../../../data/cohorts.json';
+
+btnCohort.addEventListener('click', () => {
+  alert('sjsj');
 
 /* Variables que guardarán json */
 let users = []; // Arreglo de usuarios de la data EN BRUTO
@@ -32,6 +33,63 @@ fetch(progressJSON)
     console.log(progress);
   });
 
+fetch(cohortsJSON)
+  .then(response => response.json())
+  .then(data => {
+    cohorts = data;
+    console.log(cohorts);
+  });
+
+  let lect = 0;
+let quiz = 0;
+for (let idEstudiante in progress) {
+	  for (let idCurso in progress[idEstudiante]) {
+    let completedlect = 0;
+    let completedquiz = 0;
+    let lect = 0;
+    let quiz = 0;
+    let exercises = 0;
+    let completedexercises = 0;
+    let scoreSum = 0;
+    let scoreAvg = 0;
+    for (let idUnits in progress[idEstudiante][idCurso]) {
+      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+            if (chapter.type === 'read') {
+              lect++;
+            }
+            if (chapter.type === 'read' && chapter.completed === 1) {
+              completedlect++;
+            }                 
+            if (chapter.type === 'quiz') {
+              quiz++;
+            } 
+            if (chapter.type === 'quiz' && chapter.completed === 1) {
+              completedquiz++;
+              scoreSum += chapter.score;
+            }
+            if (chapter.type === 'practice') {
+              exercises++;
+            }
+            if (chapter.type === 'practice' && chapter.completed === 1) {
+              completedexercises++;
+            }
+          }               
+        }
+      }
+    }
+    let percentLect = Math.round((completedlect / lect) * 100); 
+    let percentQuiz = Math.round((completedquiz / quiz) * 100);
+    let percentExercises = Math.round((completedexercises / exercises) * 100);
+    scoreAvg = scoreSum / completedquiz;
+    console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises)
+    /*document.getElementById('contenido').innerHTML = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);*/
+  }
+}
+});
+  
 
 /* Declaración de objetos globales (constructor) */
 class Usuario {
@@ -48,11 +106,6 @@ class Stats {
     this.Quizzes = Quizzes;
   }
 }
-
-Stats.Reads = Reads;
-Stats.Quizzes = Quizzes;
-Stats.Exercises = Exercises;
-Stats.Percent = Percent;
 
 /* Construcción objeto Quizzes */
 class Quizzes {
@@ -90,6 +143,8 @@ class Percent {
   }
 }
 
+
+/*const lecturasStudens = () => { 
 for (let idEstudiante in progress) {
   console.log('ID > ' + idEstudiante + JSON.stringify(progress[idEstudiante]));
 }
@@ -102,115 +157,173 @@ users.forEach(usuario => {
 
 let readEst = 0;
 for (let idEstudiante in progress) {
-  // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-  for (let idCursoR in progress[idEstudiante]) {
-    let completedreads = 0;
-    // console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-    for (let idUnitsR in progress[idEstudiante][idCursoR]) {
-      // console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-      for (let indexPartsR in progress[idEstudiante][idCursoR][idUnitsR]) {
-        // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-        for (let indexCoursesR in progress[idEstudiante][idCursoR][idUnitsR][indexPartsR]) {
-          // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-          for (let indextypeR in progress[idEstudiante][idCursoR][idUnitsR][indexPartsR][indexCoursesR]) {
-            let chapterRead = ((progress[idEstudiante][idCursoR][idUnitsR][indexPartsR][indexCoursesR][indextypeR])); 
-            console.log(chapterRead);
-            if (chapterRead.type === 'read') {
-              Reads.total = readEst++;
+	  for (let idCurso in progress[idEstudiante]) {
+    let completedlect = 0;
+    let lect = 0;
+    for (let idUnits in progress[idEstudiante][idCurso]) {
+      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+            if (chapter.type === 'read') {
+              lect++;
             }
-            if (chapterRead.type === 'read' && chapterRead.completed === 1) {
-              Reads.completed = (completedreads = completedreads + 1); {
-                if (readEst > 1 && completedreads > 1) {
-                  Reads.percent = ((readEst % completedreads) * 100);
-                }
-              }                  
-            }               
+            if (chapter.type === 'read' && chapter.completed === 1) {
+              completedlect++;
+            }                 
+          }               
+        }
+      }
+    }
+    let percentLect = Math.round((completedlect / lect) * 100); 
+    console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect);
+    reads = new Reads (lect, completedlect, percentlect);
+  }
+}
+return reads;
+}
+
+
+const quizzesStudents = () => {
+for (let idEstudiante in progress) {
+  for (let idCurso in progress[idEstudiante]) {
+  let completedquiz = 0;
+  let quiz = 0;
+  let scoreSum = 0;
+  let scoreAvg = 0;
+  for (let idUnits in progress[idEstudiante][idCurso]) {
+    for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+      for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+        for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+          let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+          if (chapter.type === 'quiz') {
+            quiz++;
+          } 
+          if (chapter.type === 'quiz' && chapter.completed === 1) {
+            completedquiz++;
+            scoreSum += chapter.score;
           }
-        }
+        }               
       }
     }
   }
+  let percentQuiz = Math.round((completedquiz / quiz) * 100);
+  scoreAvg = scoreSum / completedquiz;
+  console.log(idEstudiante + ' > ' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg);
+  quizzes = new Quizzes (quiz, completedquiz, percentQuiz, scoreSum, scoreAvg);
+}
+}
+return quizzes;
 }
 
-let quizzesEst = 0;
-for (let idEstudiante in progress) {
-  // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-  for (let idCursoQ in progress[idEstudiante]) {
-    let completedQuizz = 0;
-    // console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-    for (let idUnitsQ in progress[idEstudiante][idCursoQ]) {
-      // console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-      for (let indexPartsQ in progress[idEstudiante][idCursoQ][idUnitsQ]) {
-        // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-        for (let indexCoursesQ in progress[idEstudiante][idCursoQ][idUnitsQ][indexPartsQ]) {
-          // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-          for (let indextypeQ in progress[idEstudiante][idCursoQ][idUnitsQ][indexPartsQ][indexCoursesQ]) {
-            let chapterQuizz = ((progress[idEstudiante][idCursoQ][idUnitsQ][indexPartsQ][indexCoursesQ][indextypeQ])); 
-            console.log(chapterQuizz); {
-              if (chapterQuizz.type === 'quiz') {
-                Quizzes.total = quizzesEst++;
-                if (chapterQuizz.type === 'quiz' && chapterQuizz.completed === 1) {
-                  Quizzes.completed = (completedQuizz = completedQuizz + 1); {
-                  // porcentaje global
-                    if (completedQuizz > 1 && quizzesEst > 1) {
-                      Quizzes.percent = ((completedQuizz % quizzesEst) * 100); {
-                        if (completedQuizz > 0) {
-                          let scoreSum = 0;
-                          Quizzes.scoreSum = (scoreSum += completedQuizz);
-                          Quizzes.scoreAvg = (scoreSum % 735);
-                        }
-                      }
-                    }
-                  } 
-                }
-              }
-            }                  
+
+const exercisesStudents = () => {
+  for (let idEstudiante in progress) {
+	  for (let idCurso in progress[idEstudiante]) {
+    let exercises = 0;
+    let completedexercises = 0;
+    for (let idUnits in progress[idEstudiante][idCurso]) {
+      for (let indexParts in progress[idEstudiante][idCurso][idUnits]) {
+        for (let indexCourses in progress[idEstudiante][idCurso][idUnits][indexParts]) {
+          for (let indextype in progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]) {
+            let chapter = ((progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses][indextype])); 
+            if (chapter.type === 'practice') {
+              exercises++;
+            }
+            if (chapter.type === 'practice' && chapter.completed === 1) {
+              completedexercises++;
+            }
           }               
         }
       }
     }
+    let percentExercises = Math.round((completedexercises / exercises) * 100);
+    console.log(idEstudiante + ' > ' + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
+    practice = new Exercises (exercises, completedexercises, percentExercises);
   }
+}
+return practice;
 }
 
-let exercises = 0;
-for (let idEstudiante in progress) {
-  // console.log("ID > "+JSON.stringify(progress[idEstudiante]));
-  for (let idCursoEx in progress[idEstudiante]) {
-    let completedExercises = 0;
-    // console.log("ID CURSO > "+JSON.stringify(progress[idEstudiante][idCurso]));
-    for (let idUnitsEx in progress[idEstudiante][idCursoEx]) {
-      // console.log("ID estudiante > " + idEstudiante + JSON.stringify((progress[idEstudiante][idCurso])[idUnits]));
-      for (let indexPartsEx in progress[idEstudiante][idCursoEx][idUnitsEx]) {
-        // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts]));
-        for (let indexCoursesEx in progress[idEstudiante][idCursoEx][idUnitsEx][indexPartsEx]) {
-          // console.log("ID estudiante > " + idEstudiante + JSON.stringify(progress[idEstudiante][idCurso][idUnits][indexParts][indexCourses]));
-          for (let indextypeEx in progress[idEstudiante][idCursoEx][idUnitsEx][indexPartsEx][indexCoursesEx]) {
-            let chapterExercises = ((progress[idEstudiante][idCursoEx][idUnitsEx][indexPartsEx][indexCoursesEx][indextype])); 
-            console.log(chapterExercises); {
-              if (chapterExercises.type === 'exercises') {
-                Exercises.total = exercises++;
-                if (chapterExercises.type === 'exercises' && chapterExercises.completed === 1) {
-                  Exercises.completed = (completedExercises = completedExercises + 1); {
-                  // porcentaje global exercises
-                    if (exercises > 1 && completedExercises > 1) {
-                      Exercises.percent = ((exercises % completedExercises) * 100);
-                    }
-                  } 
-                }
-              }
-            }                  
-          }               
-        }
-      }
-    }
-  }
-}
 
 window.computeUsersStats = (user, progress, courses) => {
+  
+let processed = [];
+let progressInArray = Object.entries(progress);
+let user = users;
+for (let idEstudiante in progress) {
+  user = users[idEstudiante].id;
+  if (user === idEstudiante) {
+    let userCourses = Object.entries(progressInArray[i][1]);
+    if (userCourses.length === 0) {
+      processed.push('Usuario sin información');
+    } else {
+      let intro = userCourses[0][1];
+      let percent = intro.percent;
+      let userStats = new Stats(percent, lecturasStudens(), exercisesStudents(), quizzesStudents());
+      let users = new User(userStats);
+      processed.push(users);
+    }
+  }
+}
+return processed
+};
+
+
+const renderUsers = (user, processed) => {
+  let rankingNumber = 0;
+  for (let i = 0; i < processed.length; i++) {
+    rankingNumber++;
+    if (processed[i] === 'Usuario sin información' && user[i].role === 'student') {
+      tableName.innerHTML += '<tr>' +
+        '<td>' + rankingNumber + '</td>' +
+        '<td>' + user[i].name.toUpperCase() + '</td>' +
+        '<td class="numbers">' + '-' + '</td>' +
+        '<td class="numbers">' + '-' + '</td>' +
+        '<td class="numbers">' + '-' + '</td>' +
+        '<td class="numbers">' + '-' + '</td>' +
+        '</tr>';
+    } else if (user[i].role === 'student') {
+      tableName.innerHTML += '<tr>' +
+        '<td>' + rankingNumber + '</td>' +
+        '<td>' + user[i].name.toUpperCase() + '</td>' +
+        '<td class="numbers">' + Math.round(processed[i].stats.reads.percent) + '%' + '</td>' +
+        '<td class="numbers">' + Math.round(processed[i].stats.quizzes.percent) + '%' + '</td>' +
+        '<td class="numbers">' + Math.round(processed[i].stats.practice.percent) + '%' + '</td>' +
+        '<td class="numbers">' + Math.round(processed[i].stats.percent) + '%' + '</td>' +
+        '</tr>';
+    };
+  };
   btnAlumnas.addEventListener('click', () => {
 
   });
 };
+
+const totalStats = (processed) => {
+  let totalReadings = 0;
+  let totalQuizzes = 0;
+  let totalExercises = 0;
+  let totalCohorts = 0;
+  for (let i = 0; processed.length; i++) {
+    if (processed[i] === 'Usuario sin información') {
+      totalReadings += 0;
+      totalQuizzes += 0;
+      totalExercises += 0;
+      totalCohorts += 0;
+    } else {
+      totalReadings += processed[i].stats.reads.percent;
+      totalQuizzes += processed[i].stats.quizzes.percent;
+      totalExercises += processed[i].stats.practice.percent;
+      totalCohorts += processed[i].stats.percent;
+    }
+    document.getElementById('totalReadings').innerHTML = Math.round(totalReads / processed.length) + '%';
+    document.getElementById('totalQuizzes').innerHTML = Math.round(totalQuiz / processed.length) + '%';
+    document.getElementById('totalExercises').innerHTML = Math.round(totalExercize / processed.length) + '%';
+    document.getElementById('totalCohorts').innerHTML = Math.round(totalCohort / processed.length) + '%';
+  };
+};*/
+
+
 window.sortUsers = (users, orderBy, orderDirection) => {
 
 };
