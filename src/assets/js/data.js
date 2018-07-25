@@ -77,7 +77,7 @@ btnCohort.addEventListener('click', () => {
       let percentLect = Math.round((completedlect / lect) * 100);
       let percentQuiz = Math.round((completedquiz / quiz) * 100);
       let percentExercises = Math.round((completedexercises / exercises) * 100);
-      scoreAvg = scoreSum / completedquiz;
+      scoreAvg = Math.round(scoreSum / completedquiz);
       console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
 
       let datos = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);

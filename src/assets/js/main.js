@@ -1,4 +1,3 @@
-const btnCohort = document.getElementById('btn-cohort');
 const botonalumnas = document.getElementById('btn-alumnas');
 
 
