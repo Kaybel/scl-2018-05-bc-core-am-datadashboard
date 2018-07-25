@@ -1,5 +1,5 @@
 const btnCohort = document.getElementById('btn-cohort');
-
+const botonalumnas = document.getElementById('btn-alumnas');
 /* Variables que guardarán json */
 let users = []; // Arreglo de usuarios de la data EN BRUTO
 
@@ -10,8 +10,6 @@ let cohorts = []; // Arreglo de cohorts con la data EN BRUTO
 /* para armar courses, se debe acceder al objeto progress */
 let courses = []; // Arreglo de strings con los ids de los cursos del cohort en cuestión. Esta data se puede extraer de la propiedad coursesIndex de los objetos que representan los cohorts.
 
-
-/* Promesas (retorno de json) */
 fetch('https://raw.githubusercontent.com/Kaybel/scl-2018-05-bc-core-am-datadashboard/master/data/cohorts/lim-2018-03-pre-core-pw/users.json')
   .then(response => response.json())
   .then(data => {
@@ -78,7 +76,6 @@ btnCohort.addEventListener('click', () => {
       let percentQuiz = Math.round((completedquiz / quiz) * 100);
       let percentExercises = Math.round((completedexercises / exercises) * 100);
       scoreAvg = Math.round(scoreSum / completedquiz);
-      console.log(idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
 
       let datos = (idEstudiante + ' > ' + 'Lecturas totales: ' + lect + ' Lecturas completadas: ' + completedlect + ' % total realizado en lecturas: ' + percentLect + '%' + ' Quizzes totales: ' + quiz + ' Quizzes completados: ' + completedquiz + ' Suma de puntajes quizzes: ' + scoreSum + ' Promedio Quizzes: ' + scoreAvg + ' Ejercicios totales: ' + exercises + ' Ejercicios completados: ' + completedexercises);
 
@@ -92,7 +89,6 @@ btnCohort.addEventListener('click', () => {
       resultados.appendChild(contenedorElemento);
 
       cont.appendChild(resultados);
-
     }
   }
 });
